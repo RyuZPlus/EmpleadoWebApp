@@ -18,8 +18,18 @@
             <input type="date" name="FechaFin" value="@ViewBag.FechaFinFilter" class="form-control" />
         </div>
         <div class="col">
+            <select name="IdSucursal" class="form-control">
+                <option value="">-- Sucursal --</option>
+                <option value="1">CDMX</option>
+                <option value="2">MTY</option>
+                <option value="3">GDL</option>
+                <option value="4">Puebla</option>
+            </select>
+        </div>
+        <div class="col">
             <button type="submit" class="btn btn-primary w-100">Filtrar</button>
         </div>
+        
     </div>
 </form>
 
@@ -57,7 +67,15 @@
 <div class="pagination">
     @if (ViewBag.CurrentPage > 1)
     {
-        <a class="btn btn-outline-secondary" href="@Url.Action("Index", new { pageNumber = ViewBag.CurrentPage - 1, pageSize = 5 })">Anterior</a>
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index", new { 
+            pageNumber = ViewBag.CurrentPage - 1, 
+            pageSize = 5,
+            IdEmpleado = ViewBag.IdEmpleadoFilter,
+            Nombre = ViewBag.NombreFilter,
+            FechaInicio = ViewBag.FechaInicioFilter,
+            FechaFin = ViewBag.FechaFinFilter,
+            IdSucursal = ViewBag.IdSucursalFilter
+        })">Anterior</a>
     }
 
     @for (int i = 1; i <= ViewBag.TotalPages; i++)
@@ -68,12 +86,28 @@
         }
         else
         {
-            <a class="btn btn-outline-primary" href="@Url.Action("Index", new { pageNumber = i, pageSize = 5 })">@i</a>
+            <a class="btn btn-outline-primary" href="@Url.Action("Index", new { 
+                pageNumber = i, 
+                pageSize = 5,
+                IdEmpleado = ViewBag.IdEmpleadoFilter,
+                Nombre = ViewBag.NombreFilter,
+                FechaInicio = ViewBag.FechaInicioFilter,
+                FechaFin = ViewBag.FechaFinFilter,
+                IdSucursal = ViewBag.IdSucursalFilter
+            })">@i</a>
         }
     }
 
     @if (ViewBag.CurrentPage < ViewBag.TotalPages)
     {
-        <a class="btn btn-outline-secondary" href="@Url.Action("Index", new { pageNumber = ViewBag.CurrentPage + 1, pageSize = 5 })">Siguiente</a>
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index", new { 
+            pageNumber = ViewBag.CurrentPage + 1, 
+            pageSize = 5,
+            IdEmpleado = ViewBag.IdEmpleadoFilter,
+            Nombre = ViewBag.NombreFilter,
+            FechaInicio = ViewBag.FechaInicioFilter,
+            FechaFin = ViewBag.FechaFinFilter,
+            IdSucursal = ViewBag.IdSucursalFilter
+        })">Siguiente</a>
     }
 </div>
