@@ -1,0 +1,58 @@
+﻿@model List<EmpleadoWebApp.Models.Empleado>
+
+<h2>Lista de empleados</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Dirección</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th>Fecha Ingreso</th>
+            <th>Salario</th>
+            <th>Sucursal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.IdEmpleado</td>
+                <td>@emp.Nombre</td>
+                <td>@emp.Apellidos</td>
+                <td>@emp.Direccion</td>
+                <td>@emp.Edad</td>
+                <td>@emp.Sexo</td>
+                <td>@emp.FechaIngreso.ToShortDateString()</td>
+                <td>@emp.Salario</td>
+                <td>@emp.Sucursal</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination">
+    @if (ViewBag.CurrentPage > 1)
+    {
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index", new { pageNumber = ViewBag.CurrentPage - 1, pageSize = 5 })">Anterior</a>
+    }
+
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        if (i == ViewBag.CurrentPage)
+        {
+            <span class="btn btn-primary">@i</span>
+        }
+        else
+        {
+            <a class="btn btn-outline-primary" href="@Url.Action("Index", new { pageNumber = i, pageSize = 5 })">@i</a>
+        }
+    }
+
+    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+    {
+        <a class="btn btn-outline-secondary" href="@Url.Action("Index", new { pageNumber = ViewBag.CurrentPage + 1, pageSize = 5 })">Siguiente</a>
+    }
+</div>

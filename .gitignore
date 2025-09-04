@@ -1,0 +1,15 @@
+# Compilación
+bin/
+obj/
+
+# Archivos de usuario
+*.user
+*.suo
+
+# Configuración de Visual Studio
+.vs/
+*.vscode/
+
+# Paquetes NuGet
+*.nupkg
+packages/
