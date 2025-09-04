@@ -27,6 +27,13 @@ namespace EmpleadoWebApp.Controllers
         {
             var (empleados, totalRecords) = ObtenerEmpleados(pageNumber, pageSize, IdEmpleado, Nombre, FechaInicio, FechaFin, IdSucursal);
 
+            // Guardar filtros en ViewBag
+            ViewBag.IdEmpleadoFilter = IdEmpleado;
+            ViewBag.NombreFilter = Nombre;
+            ViewBag.FechaInicioFilter = FechaInicio?.ToString("yyyy-MM-dd");
+            ViewBag.FechaFinFilter = FechaFin?.ToString("yyyy-MM-dd");
+            ViewBag.IdSucursalFilter = IdSucursal;
+
             // Paginación
             int totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
             ViewBag.TotalPages = totalPages;

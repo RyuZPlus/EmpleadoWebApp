@@ -2,6 +2,27 @@
 
 <h2>Lista de empleados</h2>
 
+<!-- Formulario de filtros -->
+<form method="get" class="mb-3">
+    <div class="row g-2">
+        <div class="col">
+            <input type="number" name="IdEmpleado" value="@ViewBag.IdEmpleadoFilter" placeholder="Id Empleado" class="form-control" />
+        </div>
+        <div class="col">
+            <input type="text" name="Nombre" value="@ViewBag.NombreFilter" placeholder="Nombre" class="form-control" />
+        </div>
+        <div class="col">
+            <input type="date" name="FechaInicio" value="@ViewBag.FechaInicioFilter" class="form-control" />
+        </div>
+        <div class="col">
+            <input type="date" name="FechaFin" value="@ViewBag.FechaFinFilter" class="form-control" />
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+        </div>
+    </div>
+</form>
+
 <table class="table table-striped">
     <thead>
         <tr>
